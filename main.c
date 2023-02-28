@@ -8,34 +8,43 @@
 int main(int argc, char *argv[])
 {
 	double clockstart, clockend;
-	clockstart = rtclock(); // start clocking
-	// start: stuff I want to clock
+	clockstart = rtclock();
 
-	if (argc == 0)
+	// start: stuff I want to clock
+	int* numThreads = (int *)calloc(1, sizeof(int *));
+	int* dimension = (int *)calloc(1, sizeof(int *));
+	double **matrix;
+
+	switch (argc)
 	{
-		printf("die\n");
+	case 3: // 2 params -- Sequential
+		printf("first param: .%s.\n", argv[0]);
+		printf("second param: .%s.\n", argv[1]);
+		// if (argv[0]){
+		// 	printf("Error: mode must be either S (sequential) or P (parallel)");
+		// }
+		break;
+	case 4: // 3 params -- Parallel
+		break;
+	default: // 0 params, 1 param, or too many params
+		printf("Usage: ./mmmSol <mode> [num threads] <size>");
 		exit(0);
+		break;
 	}
-	char mode = argv[1];
-	int numThreads;
-	int dimension;
-	// if first arg is S --> make sure theres only one whole number
-	// if the first arg is P --> next arg is number of threads, then the arg after that is the matrix dimension
 
 	// dynamically allocate matrix
-	// malloc a size N array of pointers to ints
-	int **matrix;
-	matrix = (int **)malloc(sizeof(int *) * dimension);
-	for (int i = 0; i < N; i++)
-	{
-		matrix[i] = (int *)malloc(sizeof(int) * dimension;)
-	}
+	//
+	//
+	//
+	//
+	//
+	//
 
 	// free
-	for (int i = 0; i < N; i++)
+	for (int i = 0; i < dimension; i++)
 	{
 		free(matrix[i]);
-		matrix[i] = NULL; // remove dangling pointer
+		matrix[i] = NULL;
 	}
 	free(matrix);
 	matrix = NULL;
