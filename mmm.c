@@ -11,31 +11,34 @@
  * @param matrix pointer to a 2D array
  * @param dimension integer width of a square matrix
  */
-void mmm_init(double ***matrix, int dimension)
+double **mmm_init(double **matrix, int dimension)
 {
 	printf("mmm_init started\n");
-	*matrix = calloc(dimension, sizeof(double *));
+	matrix = calloc(dimension, sizeof(double *));
 	for (int i = 0; i < dimension; i++)
 	{
-		*matrix[i] = calloc(dimension, sizeof(double));
+		matrix[i] = calloc(dimension, sizeof(double));
 		for (int j = 0; i < dimension; j++)
 		{
-			*matrix[i][j] = rand() % 100;
+			matrix[i][j] = rand() % 100;
 		}
 	}
 	printf("mmm_init ended\n");
+	return matrix;
 }
 
 /**
  * Reset a given matrix to zeroes
- * @param matrix pointer to a 2D array
+ * @param matrix pointer to a 2D arrayF
  * @param dimension integer width of a square matrix
  */
 void mmm_reset(double **matrix, int dimension)
 {
 	printf("mmm_reset started\n");
-	for (int i = 0; i < dimension; i++){
-		for (int j = 0; i < dimension; j++){
+	for (int i = 0; i < dimension; i++)
+	{
+		for (int j = 0; i < dimension; j++)
+		{
 			matrix[i][j] = 0;
 		}
 	}
@@ -68,6 +71,7 @@ void mmm_seq()
 	printf("mmm_seq started\n");
 	// TODO - code to perform sequential MMM
 
+
 	printf("mmm_seq ended\n");
 }
 
@@ -78,6 +82,7 @@ void *mmm_par(void *args)
 {
 	printf("mmm_par started\n");
 	// TODO - code to perform parallel MMM
+
 
 	printf("mmm_par ended\n");
 	return args;
