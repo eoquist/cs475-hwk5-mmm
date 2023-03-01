@@ -13,4 +13,6 @@ void mmm_seq();
 void *mmm_par(void *args);
 double mmm_verify(double **matrix_A, double **matrix_B);
 void mmm_print(char* mode, int numThreads, int dimension, double avgTime);
+void funny();
+
 #endif /* MMM_H_ */

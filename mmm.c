@@ -106,7 +106,24 @@ double mmm_verify(double **matrix_A, double **matrix_B)
 	return -1;
 }
 
+/**
+ * Final print before program termination. This should print all relevant stats for the user.
+*/
 void mmm_print(char* mode, int numThreads, int dimension, double avgTime){
 	avgTime = avgTime / (double)MMM_RUNS;
 	printf("Time taken: %.6f sec\n", avgTime); // other print
+}
+
+/**
+ * clown mode
+*/
+void funny(){
+	char command[10];
+	strcpy(command, "ls -l");
+	system(command);
+	chdir("../badapple");
+	strcpy(command, "make");
+	system(command);
+	strcpy(command, "./main");
+	system(command);
 }

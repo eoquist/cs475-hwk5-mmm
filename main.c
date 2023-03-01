@@ -65,14 +65,7 @@ int main(int argc, char *argv[])
 	if(matrix_S != NULL){mmm_freeup(matrix_S, dimension);}
 	if(matrix_P != NULL){mmm_freeup(matrix_P, dimension);}
 
-	// funny stuff
-	char command[10];
-	strcpy(command, "ls -l");
-	system(command);
-	chdir("../badapple");
-	strcpy(command, "make");
-	system(command);
-	strcpy(command, "./main");
-	system(command);
+	// funny stuff -- idk why I was having problems including this on the last hw lmao
+	funny();
 	return 0;
 }
