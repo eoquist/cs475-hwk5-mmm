@@ -8,7 +8,7 @@
 int main(int argc, char *argv[])
 {
 	if (argc <= 2){
-		printf("Usage: ./mmmSol <mode> [num threads] <size>");
+		printf("Usage: ./mmmSol <mode> [num threads] <size>\n");
 		exit(0);
 	}
 
@@ -57,10 +57,11 @@ int main(int argc, char *argv[])
 		// mmm_verify();
 
 	} else {
-		printf("Error: mode must be either S (sequential) or P (parallel)");
-		exit(0);
+		printf("Error: mode must be either S (sequential) or P (parallel)\n");
+		// exit(0);
 	}
 
+	printf("freeup currently having issues lmao\n");
 	if(matrix_S != NULL){mmm_freeup(matrix_S, dimension);}
 	if(matrix_P != NULL){mmm_freeup(matrix_P, dimension);}
 
