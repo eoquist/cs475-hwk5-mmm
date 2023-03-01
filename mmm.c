@@ -105,3 +105,8 @@ double mmm_verify(double **matrix_A, double **matrix_B)
 	printf("mmm_verify ended\n");
 	return -1;
 }
+
+void mmm_print(char* mode, int numThreads, int dimension, double avgTime){
+	avgTime = avgTime / (double)MMM_RUNS;
+	printf("Time taken: %.6f sec\n", avgTime); // other print
+}

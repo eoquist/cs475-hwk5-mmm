@@ -13,6 +13,7 @@ int main(int argc, char *argv[])
 	}
 
 	double clockstart, clockend;
+	double clockavg = 0;
 	char *mode = "X";
 	int numThreads = 0;
 	int dimension = 0;
@@ -24,14 +25,14 @@ int main(int argc, char *argv[])
 		dimension = atoi(argv[1]);
 		matrix_S = mmm_init(matrix_S, dimension); // i hate this
 		
-		
-		// inside a for loop to get an averages time
-		clockstart = rtclock(); // start: stuff I want to clock
+		for(int i = 0; i < MMM_RUNS; i++){
+			clockstart = rtclock(); // start: stuff I want to clock
 
 		
-		clockend = rtclock(); // end: stuff I want to clock
-		printf("Time taken: %.6f sec\n", (clockend - clockstart)); // other print
-
+			clockend = rtclock(); // end: stuff I want to clock
+			clockavg += clockend - clockstart;
+		}
+		mmm_print(mode, numThreads, dimension, clockavg);
 	} else if (strcmp(argv[0], "P") == 0){ // Parallel
 		if (argc < 4){
 			printf("Error: parallel mode requires [num threads]\n");
@@ -43,14 +44,15 @@ int main(int argc, char *argv[])
 		matrix_S = mmm_init(matrix_S, dimension); // i hate this
 		matrix_P = mmm_init(matrix_P, dimension); // i hate this so much
 		
-		//
-		// inside a for loop to get an averages time
-		clockstart = rtclock(); // start: stuff I want to clock
+		for(int i = 0; i < MMM_RUNS; i++){
+			clockstart = rtclock(); // start: stuff I want to clock
 
 		
-		clockend = rtclock(); // end: stuff I want to clock
-		printf("Time taken: %.6f sec\n", (clockend - clockstart)); // other print
+			clockend = rtclock(); // end: stuff I want to clock
+			clockavg += clockend - clockstart;
+		}
 
+		mmm_print(mode, numThreads, dimension, clockavg);
 		// compare the matrices and then free them
 		// mmm_verify();
 

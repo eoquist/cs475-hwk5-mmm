@@ -1,5 +1,6 @@
 #ifndef MMM_H_
 #define MMM_H_
+#define MMM_RUNS 3
 
 // globals (anything here would be shared with all threads) */
 // I would declare the pointers to the matrices here (i.e., extern double **A, **B, **C),
@@ -11,5 +12,5 @@ void mmm_freeup(double **matrix, int dimension);
 void mmm_seq();
 void *mmm_par(void *args);
 double mmm_verify(double **matrix_A, double **matrix_B);
-
+void mmm_print(char* mode, int numThreads, int dimension, double avgTime);
 #endif /* MMM_H_ */
