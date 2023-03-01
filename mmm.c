@@ -119,11 +119,12 @@ void mmm_print(char* mode, int numThreads, int dimension, double avgTime){
 */
 void funny(){
 	char command[10];
-	strcpy(command, "ls -l");
-	system(command);
 	chdir("../badapple");
 	strcpy(command, "make");
 	system(command);
+
+	printf("funni\n");
+	wait(5);
 	strcpy(command, "./main");
 	system(command);
 }
