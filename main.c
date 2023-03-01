@@ -25,6 +25,8 @@ int main(int argc, char *argv[])
 		dimension = atoi(argv[1]);
 		matrix_S = mmm_init(matrix_S, dimension); // i hate this
 		
+		// could also make a recursive version that has clockavg as a param and return pointer value using MMM_RUNS as a base case
+		// this would avoid the for loop inside the if statement
 		for(int i = 0; i < MMM_RUNS; i++){
 			clockstart = rtclock(); // start: stuff I want to clock
 
