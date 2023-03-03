@@ -8,7 +8,7 @@
 int main(int argc, char *argv[])
 {
 	if (argc <= 2){
-		printf("Usage: ./mmmSol <mode> [num threads] <size>\n");
+		printf("Usage: ./mmm <mode> [num threads] <size>\n");
 		exit(0);
 	}
 
@@ -20,13 +20,16 @@ int main(int argc, char *argv[])
 	double **matrix_S;
 	double **matrix_P;
 
-	if (strcmp(argv[0], "S") == 0){ // Sequential
-		strcpy(mode,argv[0]);
-		dimension = atoi(argv[1]);
+	printf("mode is .%s.\n",argv[1]);
+
+	if (strcmp(argv[1], "S") == 0){ // Sequential
+		strcpy(mode,argv[1]);
+		dimension = atoi(argv[2]);
 		matrix_S = mmm_init(matrix_S, dimension); // i hate this
 		
 		// could also make a recursive version that has clockavg as a param and return pointer value using MMM_RUNS as a base case
 		// this would avoid the for loop inside the if statement
+		// make sure to --counter in the recursion call
 		for(int i = 0; i < MMM_RUNS; i++){
 			clockstart = rtclock(); // start: stuff I want to clock
 
@@ -35,14 +38,14 @@ int main(int argc, char *argv[])
 			clockavg += clockend - clockstart;
 		}
 		mmm_print(mode, numThreads, dimension, clockavg);
-	} else if (strcmp(argv[0], "P") == 0){ // Parallel
+	} else if (strcmp(argv[1], "P") == 0){ // Parallel
 		if (argc < 4){
 			printf("Error: parallel mode requires [num threads]\n");
 			exit(0);
 		}
-		strcpy(mode,argv[0]);
-		numThreads = atoi(argv[1]);
-		dimension = atoi(argv[2]);
+		strcpy(mode,argv[1]);
+		numThreads = atoi(argv[2]);
+		dimension = atoi(argv[3]);
 		matrix_S = mmm_init(matrix_S, dimension); // i hate this
 		matrix_P = mmm_init(matrix_P, dimension); // i hate this so much
 		

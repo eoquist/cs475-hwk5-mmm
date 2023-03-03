@@ -14,10 +14,10 @@
 double **mmm_init(double **matrix, int dimension)
 {
 	printf("mmm_init started\n");
-	matrix = calloc(dimension, sizeof(double *));
+	matrix = calloc(dimension, sizeof(double **));
 	for (int i = 0; i < dimension; i++)
 	{
-		matrix[i] = calloc(dimension, sizeof(double));
+		matrix[i] = calloc(dimension, sizeof(double*));
 		for (int j = 0; i < dimension; j++)
 		{
 			matrix[i][j] = rand() % 100;
