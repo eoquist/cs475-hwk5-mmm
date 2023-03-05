@@ -9,10 +9,10 @@
 double** mmm_init(double **matrix, int dimension);
 void mmm_reset(double **matrix, int dimension);
 void mmm_freeup(double **matrix, int dimension);
-void mmm_seq();
+void mmm_seq(double **matrix, int dimension);
 void *mmm_par(void *args);
-double mmm_verify(double **matrix_A, double **matrix_B);
-void mmm_print(char* mode, int numThreads, int dimension, double avgTime);
+double mmm_verify(double **matrix_A, double **matrix_B, int dimension);
+void mmm_print(char* mode, int numThreads, int dimension, double avgTime_seq, double avgTime_par);
 void funny();
 
 #endif /* MMM_H_ */
