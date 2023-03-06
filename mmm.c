@@ -152,14 +152,17 @@ void mmm_print(char* mode, int numThreads, int dimension, double avgTime_seq, do
 void funny(){
 	// ask david about running make within a make file?
 	chdir("../badapple");
-	printf("I had to decrease the volume by 93%%. Enjoy!\n");
+	printf("======================================\n");
+	printf("Hope you enjoy!");
 	system("make -s");
-	sleep(6);
-	// just think about it
-	// pid_t pid = fork();
-	// if (pid == 0) {
-   	// 	system("canebrake-gtk-play -f file_path");
-   	// 	exit(0);
-	// }
+	sleep(3);
+	
+	chdir("../cs475-hwk5-mmm");
+	int ret_val;
+	ret_val = system("PULSE_SERVER=localhost mpg123 mystery.mp3 &");
+	if(0 != ret_val){perror("There was an error");}
+	
+	sleep(3);
+	chdir("../badapple");
 	system("./main");
 }
