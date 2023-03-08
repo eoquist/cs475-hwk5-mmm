@@ -13,15 +13,17 @@
  * @param matrix pointer to a 2D array
  * @param dimension integer width of a square matrix
  */
-double **mmm_init(double **matrix, int dimension)
+double **mmm_init(double **matrix, int dimension, int fillWithRandom)
 {
 	matrix = (double **)calloc(dimension, sizeof(double *));
 	for (int i = 0; i < dimension; i++)
 	{
 		matrix[i] = (double *)calloc(dimension, sizeof(double));
-		for (int j = 0; j < dimension; j++)
-		{
-			matrix[i][j] = (double)(rand() % 100);
+		if(fillWithRandom == 1){
+			for (int j = 0; j < dimension; j++)
+			{
+				matrix[i][j] = (double)(rand() % 100);
+			}
 		}
 	}
 	return matrix;
@@ -66,7 +68,7 @@ void mmm_freeup(double **matrix, int dimension)
  */
 void mmm_seq(double **matrix, int dimension)
 {
-	double **matrix_product  = mmm_init(matrix_product, dimension);
+	double **matrix_product  = mmm_init(matrix_product, dimension, 0);
     for (int i = 0; i < dimension; i++) {
         for (int j = 0; j < dimension; j++) {
             double sum = 0.0;
@@ -88,6 +90,7 @@ void *mmm_par(void *args)
 {
 	printf("mmm_par started\n");
 	// TODO - code to perform parallel MMM
+
 
 
 	printf("mmm_par ended\n");

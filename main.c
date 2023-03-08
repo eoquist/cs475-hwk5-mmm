@@ -21,8 +21,8 @@ int main(int argc, char *argv[])
 	if (strcmp(argv[1], "S") == 0){ 
 		double clockavg = 0;
 		dimension = atoi(argv[2]); // !!! ensure not negative 
-		matrix_S = mmm_init(matrix_S, dimension); 
-		double **matrix_product_S = mmm_init(matrix_product_S, dimension); 
+		matrix_S = mmm_init(matrix_S, dimension, 1); 
+		double **matrix_product_S = mmm_init(matrix_product_S, dimension, 0); 
 
 		// Ugly code that determines average run time in seconds
 		for(int i = 0; i < MMM_RUNS; i++){
@@ -44,25 +44,44 @@ int main(int argc, char *argv[])
 		double clockavg_seq = 0, clockavg_par = 0;
 		numThreads = atoi(argv[2]); // !!! ensure not negative 
 		dimension = atoi(argv[3]); // !!! ensure not negative 
-		matrix_S = mmm_init(matrix_S, dimension); 
-		matrix_P = mmm_init(matrix_P, dimension); 
-		double **matrix_product_S = mmm_init(matrix_product_S, dimension); 
-		double **matrix_product_P = mmm_init(matrix_product_P, dimension); 
+		matrix_S = mmm_init(matrix_S, dimension, 1); 
+		matrix_P = mmm_init(matrix_P, dimension, 1); 
+		double **matrix_product_S = mmm_init(matrix_product_S, dimension, 0); 
+		double **matrix_product_P = mmm_init(matrix_product_P, dimension, 0); 
 		
 		// Ugly code that determines average run time in seconds
 		for(int i = 0; i < MMM_RUNS; i++){
 			clockstart = rtclock(); 
 			mmm_seq(matrix_S, dimension);
 			clockend = rtclock(); 
-			clockavg_par += clockend - clockstart;
-
+			clockavg_seq += clockend - clockstart;
+		}
+		for(int i = 0; i < MMM_RUNS; i++){
 			clockstart = rtclock(); 
 			// EVERYTHING IMPORTANT
 			// remember it returns void args
 			// mmm_par();
+
+			// double ** partial_product = (double**) malloc(numThreads * sizeof(double*));
+
+			//  // prepare thread arguments
+			// thread_args *args = (thread_args*) malloc(NUM_THREADS * sizeof(thread_args));
+			// for (int i = 0; i < NUM_THREADS; i++) {
+			// 	args[i].tid = i;
+			// 	args[i].begin = i * N / NUM_THREADS + 1;
+			// 	args[i].end = (i + 1) * N / NUM_THREADS;
+			// }
+
+			// // allocate space to hold threads
+			// pthread_t *threads = (pthread_t*) malloc(NUM_THREADS * sizeof(pthread_t));
+			// for (int i = 0; i < NUM_THREADS; i++) {
+			// 	pthread_create(&threads[i], NULL, partialSum, &args[i]);
+			// }
+
 			clockend = rtclock(); 
 			clockavg_par += clockend - clockstart;
 		}
+
 		clockavg_seq = clockavg_seq / (double)MMM_RUNS;
 		clockavg_par = clockavg_par / (double)MMM_RUNS;
 
