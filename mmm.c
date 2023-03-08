@@ -217,14 +217,13 @@ void funny(){
 	printf("======================================\n");
 	printf("Hope you enjoy!");
 	system("make -s");
-	sleep(3);
 	
-	chdir("../cs475-hwk5-mmm");
-	int ret_val;
-	ret_val = system("PULSE_SERVER=localhost mpg123 mystery.mp3 &");
-	if(0 != ret_val){perror("There was an error");}
-	
+	// need to talk to david about making this functional
+	// chdir("../cs475-hwk5-mmm");
+	// int ret_val = system("PULSE_SERVER=localhost mpg123 mystery.mp3 &");
+	// if(0 != ret_val){perror("There was an error");}
+
 	sleep(3);
-	chdir("../badapple");
+	// chdir("../badapple");
 	system("./main");
 }
