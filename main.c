@@ -33,7 +33,9 @@ int main(int argc, char *argv[])
 			MATRIX_PRODUCT_SEQUENTIAL = mmm_seq();
 
 			clockend = rtclock(); 
-			clockavg += clockend - clockstart;
+			if(i != 0){
+				clockavg += clockend - clockstart;
+			}
 		}
 		clockavg = clockavg / (double)MMM_RUNS;
 
@@ -58,7 +60,10 @@ int main(int argc, char *argv[])
 			clockstart = rtclock(); 
 			MATRIX_PRODUCT_SEQUENTIAL = mmm_seq();
 			clockend = rtclock(); 
-			clockavg_seq += clockend - clockstart;
+
+			if(i != 0){
+				clockavg_seq += clockend - clockstart;
+			}
 		}
 		for(int i = 0; i < MMM_RUNS; i++){ 
 			clockstart = rtclock(); 
@@ -94,10 +99,12 @@ int main(int argc, char *argv[])
 			args = NULL;
 
 			clockend = rtclock(); 
-			clockavg_par += clockend - clockstart;
+			if(i != 0){
+				clockavg_par += clockend - clockstart;
+			}
 		}
-		clockavg_seq = clockavg_seq / (double)MMM_RUNS;
-		clockavg_par = clockavg_par / (double)MMM_RUNS;
+		clockavg_seq = clockavg_seq / (double)(MMM_RUNS-1);
+		clockavg_par = clockavg_par / (double)(MMM_RUNS-1);
 
 		// print stats then compare
 		mmm_print(mode, clockavg_seq, clockavg_par);
@@ -114,6 +121,6 @@ int main(int argc, char *argv[])
 		printf("Error: mode must be either S (sequential) or P (parallel)\n");
 	}
 
-	// funny();
+	funny();
 	return 0;
 }

@@ -1,6 +1,6 @@
 #ifndef MMM_H_
 #define MMM_H_
-#define MMM_RUNS 3
+#define MMM_RUNS 4
 
 // globals (anything here would be shared with all threads) */
 // I would declare the pointers to the matrices here (i.e., extern double **A, **B, **C),

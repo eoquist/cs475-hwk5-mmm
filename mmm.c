@@ -157,9 +157,9 @@ void mmm_print(char* mode, double avgTime_seq, double avgTime_par){
 	printf("thread count: %d\n", NUM_THREADS);
 	printf("size: %d\n", DIMENSION);
 	printf("========\n");
-	printf("Sequential Time (avg of %d runs): %.6f sec\n", MMM_RUNS, avgTime_seq);
+	printf("Sequential Time (avg of %d runs): %.6f sec\n", MMM_RUNS - 1, avgTime_seq);
 	if(strcmp(mode,"P")==0){
-		printf("Parallel Time (avg of %d runs): %.6f sec\n", MMM_RUNS, avgTime_par);
+		printf("Parallel Time (avg of %d runs): %.6f sec\n", MMM_RUNS - 1, avgTime_par);
 		double speedup = avgTime_seq / avgTime_par;
 		printf("Speedup: %.6f sec\n", speedup);
 	}
