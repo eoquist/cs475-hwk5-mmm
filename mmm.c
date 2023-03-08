@@ -15,7 +15,7 @@
 double **mmm_init(double **matrix, int fillWithRandom)
 {
 	// Set the seed value to the current time
-  	// srand(time(NULL));
+  	srand(time(NULL));
 
 	matrix = (double **)calloc(DIMENSION, sizeof(double *));
 	for (int i = 0; i < DIMENSION; i++)
