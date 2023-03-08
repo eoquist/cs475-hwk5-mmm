@@ -14,6 +14,9 @@
  */
 double **mmm_init(double **matrix, int fillWithRandom)
 {
+	// Set the seed value to the current time
+  	// srand(time(NULL));
+
 	matrix = (double **)calloc(DIMENSION, sizeof(double *));
 	for (int i = 0; i < DIMENSION; i++)
 	{
@@ -97,7 +100,6 @@ double **mmm_seq()
 void *mmm_par(void *args_void)
 {
 	thread_args *args = (thread_args*)args_void;
-	int tid = args->tid;
 	int start_row = args->start_row;
 	int end_row = args->end_row;
 	

@@ -72,13 +72,12 @@ int main(int argc, char *argv[])
 			int partition_size = DIMENSION / NUM_THREADS;
   			int remainder = DIMENSION % NUM_THREADS;
 			
-			// definitely janky start/end here and in mmm_par but we don't think about that :)
 			for (int i = 0; i < NUM_THREADS; i++) {
 				args[i].tid = i;
 				args[i].start_row = i * (DIMENSION / NUM_THREADS);
 				args[i].end_row = args[i].start_row  + partition_size;
 				if (i == NUM_THREADS - 1) {
-					args[i].start_row += remainder;
+					args[i].end_row = DIMENSION - 1;
     			}
 				printf("thread %d [%d,%d]\n", i, args[i].start_row, args[i].end_row);
 			}
