@@ -217,13 +217,29 @@ void funny(){
 	printf("======================================\n");
 	printf("Hope you enjoy!");
 	system("make -s");
+
+	// https://askubuntu.com/questions/179630/execute-a-command-on-local-computer-from-a-connected-remote-ssh-host 
+	// https://askubuntu.com/questions/70560/why-am-i-getting-this-connection-to-pulseaudio-failed-error
+	// https://askubuntu.com/questions/1056153/pulseaudio-not-working-daemon-already-running-and-no-permission-for-home-folder
+	// https://askubuntu.com/questions/179630/execute-a-command-on-local-computer-from-a-connected-remote-ssh-host
+	// https://dhole.github.io/post/pulseaudio_multiple_users/
+
+
+	// https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/Network/
+	// X forwarding
+	// xprop -root | grep PULSE -----> xprop:  unable to open display ''
+	// Enable X11 forwarding
+	// While doing ssh use the option -X to enable X11 forwarding
+	// $ ssh username@hostname -X
+
 	
 	// need to talk to david about making this functional
-	// chdir("../cs475-hwk5-mmm");
-	// int ret_val = system("PULSE_SERVER=localhost mpg123 mystery.mp3 &");
-	// if(0 != ret_val){perror("There was an error");}
+	chdir("../cs475-hwk5-mmm");
+	int ret_val = system("PULSE_SERVER=localhost mpg123 mystery.mp3");
+	// int ret_val = system("mpg123 mystery.mp3");
+	if(0 != ret_val){perror("There was an error");}
 
 	sleep(3);
-	// chdir("../badapple");
+	chdir("../badapple");
 	system("./main");
 }
