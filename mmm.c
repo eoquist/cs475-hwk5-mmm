@@ -215,7 +215,7 @@ void funny(){
 	// ask david about running make within a make file?
 	chdir("../badapple");
 	printf("======================================\n");
-	printf("Hope you enjoy!");
+	printf("Hope you enjoy!\n");
 	system("make -s");
 
 	// https://askubuntu.com/questions/179630/execute-a-command-on-local-computer-from-a-connected-remote-ssh-host 
@@ -234,10 +234,10 @@ void funny(){
 
 	
 	// need to talk to david about making this functional
-	chdir("../cs475-hwk5-mmm");
-	int ret_val = system("PULSE_SERVER=localhost mpg123 mystery.mp3");
+	// chdir("../cs475-hwk5-mmm");
+	// int ret_val = system("PULSE_SERVER=localhost mpg123 mystery.mp3");
 	// int ret_val = system("mpg123 mystery.mp3");
-	if(0 != ret_val){perror("There was an error");}
+	// if(0 != ret_val){perror("There was an error\n");}
 
 	sleep(3);
 	chdir("../badapple");
