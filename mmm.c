@@ -235,11 +235,11 @@ void funny(){
 	
 	// need to talk to david about making this functional
 	// chdir("../cs475-hwk5-mmm");
-	// int ret_val = system("PULSE_SERVER=localhost mpg123 mystery.mp3");
+	// int ret_val = system("PULSE_SERVER=localhost mpg123 mystery.mp3 &");
 	// int ret_val = system("mpg123 mystery.mp3");
 	// if(0 != ret_val){perror("There was an error\n");}
 
 	sleep(3);
-	chdir("../badapple");
+	// chdir("../badapple");
 	system("./main");
 }
